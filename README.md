@@ -1,38 +1,46 @@
+# Marios specialty Products.
+
+#### By Isaac Overstreet
+
+
 ## Description
+_An app used to record products and their reviews for customers to view. As well as the option to be an Admin or not._
 
-This is a basic scaffolded Rails project using Docker with Ruby 2.6.5, Rails 5.2.4, and Postgres 12.1. This project can be used in lieu of installing Ruby, Rails and Postgres on your machine. When you run `docker-compose up`, Docker will create two containers on your machine: a Ruby/Rails environment running the local server and a Postgres container where your database is stored.
+## Technologies Used
+* _Ruby_
+* _Capybara_
+* _rspec_
+* _pry_
+* _Docker_
+* _Rails_
+* _PostgreSQL_
+* _Shoulda Matchers_
+* _Faker_
+* _Active Record_
+* _Devise_
 
-### Running Rails and Postgres Servers
+## Using this app:
 
-* Run `docker-compose up` to run the local server at `localhost:3000`. However, if you go to `localhost:3000`, you will see the DB is not set up yet.
+* _Run_ `git clone https://github.com/mrunderoad/mariofood` _in your terminal to clone this repo onto your device, then navigate to the project._
+* _Run_ `bundle install` _to package the Gems_
+* _Run_ `rake db:setup` _to set up the database_._
+* _Run_ `rspec` _to run spec tests_
+* _Run_ `rails s` _to start a local server._
+* _Open up your web browser and go to_ `http://localhost:3000` _while the server is running to view project._
 
-### Running Shell Commands
+## Using this app with Docker
 
-To access a shell environment to run `rails c`, run migrations, or run other `rake` and `rails` tasks such as `rails routes`, you'll need to do the following.
+* _Run_ `git clone https://github.com/mrunderoad/mariofood` _in your terminal to clone this repo onto your device, then navigate to the project._
+* _Run_ `docker-compose run web bundle install` _to bundle the gems_
+* _Run_ `docker-compose run web sh` _to start a shell inside the container._
+* _Run_ `rake db:setup` _in the container shell to set up the database_
+* _Run_ `rspec` _to view spec tests_
+* _In your normal terminal, run_ `docker-compose up --build` _to bundle and build app._
+* _Open up your web browser and go to_ `http://localhost:3000` _while the server is running to view the project._
 
-Run the following command in the root directory of the project:
+## Known Bugs
+* _None so far._
 
-```
-$ docker-compose run web sh
-```
+## License - [MIT](https://opensource.org/licenses/MIT)
 
-It's not necessary for the containers to be running (with `$ docker-compose up`).
-
-This will open a shell where you can run any commands in the web application's environment. This includes the following commands:
-
-* `$ bundle exec rake db:create` (and any other Rake commands)
-* `$ rails routes` and `$ rails c` (as well as any other Rails commands)
-* `$ bundle exec rspec` (to run tests)
-* `$ irb` (if you just need a basic Ruby REPL)
-
-### What if I want to add more gems to my project?
-
-You'll need to complete the following steps:
-
-* First, add the gems to the project.
-
-* Run `docker-compose run web bundle install`. This will bundle the new gems.
-
-* Next, run `docker-compose up --build`. This will rebuild the project.
-
-To read Docker's documentation on running projects using Ruby and Rails, see [Quickstart: Compose and Rails](https://docs.docker.com/compose/rails/).
+Copyright (c) _2022_ _Isaac O_
