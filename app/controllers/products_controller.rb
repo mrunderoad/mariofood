@@ -10,6 +10,13 @@ class ProductsController < ApplicationController
     render :index
   end
 
+  def landing
+    @recent = Product.most_recent
+    @origin = Product.created_in_usa
+    @popular = Product.most_reviews
+    render :landing
+  end
+
   def new
     @product = Product.new
     render :new
@@ -52,13 +59,6 @@ class ProductsController < ApplicationController
     @product.destroy
     flash[:notice] = "Product Deleted!"
     redirect_to products_path
-  end
-
-  def landing
-    @recent = Product.most_recent
-    @origin = Product.created_in_usa
-    @popular = Product.most_reviews
-    render :landing
   end
 
   private
