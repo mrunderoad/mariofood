@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
-  before_action :only [:edit] do
+  before_action :only => [:new, :edit, :destroy] do
+    flash[:alert] = "Must be an admin to continue" unless is_admin?
     redirect_to products_path unless is_admin?
   end
 

@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :cost, presence: true
   validates :country_of_origin, presence: true
-  before_save(:titleize_producs)
+  before_save(:titleize_product)
 
   scope :most_reviews, -> { (
     select("products.id, products.name, count(reviews.id) as reviews_count")
@@ -19,7 +19,7 @@ class Product < ApplicationRecord
 
   private
   
-  def titleize_name
+  def titleize_product
     self.name = self.name.titleize
   end
 

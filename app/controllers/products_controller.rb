@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
   before_action :only => [:new, :edit, :destroy] do
     flash[:alert] = "Must be an admin to continue" unless is_admin?
-    redirect_to products_path unless is_admin?
+    redirect_to root_path unless is_admin?
   end
 
   def index
@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
 
   def landing
     @recent = Product.most_recent
-    @origin = Product.country_of_origin
+    @origin = Product.created_in_usa
     @popular = Product.most_reviews
     render :landing
   end
