@@ -1,0 +1,27 @@
+<h1><%= @product.name %></h1>
+<h2>Product Origin: <%= @product.country_of_origin %></h2>
+<h3>Product Cost: $<%= @product.cost %></h3>
+
+<% if @product.reviews.any? %>
+  <h3>Reviews for <%= @product.name %></h3>
+
+  <% @product.reviews.each do |review| %>
+    <ul>
+      <li>
+        <%= link_to review.author, product_review_path(@product, review) %>
+      </li>
+    </ul> 
+  <% end %>
+<% else %>
+  <p>No reviews for this product yet!</p>
+<% end %>
+
+
+<%= link_to "Add a review!", new_product_review_path(@product) %>
+<% if is_admin? %>
+  <%= link_to "Edit", edit_project_path(@product) %>
+  <%= link_to "Delete", product_path(@product) :data => {:confirm => "really?",
+  :method => "delete"} %>
+<% end %>
+
+<%= link_to "View All Products", products_path %>

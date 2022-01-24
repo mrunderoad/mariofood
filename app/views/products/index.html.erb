@@ -1,0 +1,14 @@
+<% if is_admin? %>
+  <%= link_to "Add new product", new_product_path, :class => "btn btn-primary" %>
+<% end %>
+<h1>All of Marios Products:</h1>
+
+<% if @products.any? %>
+  <ul>
+    <% @products.each do |product| %>
+      <li><%= link_to product.name, product_path(product) %> - $<%= product.cost %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no products yet.</p>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Marios Specialty Products!</h1>
+<p> Welcome to Marios! Please enjoy our products! </p>
+
+<h2>US made products:</h2>
+
+<% if @origin.any? %>
+  <ul> 
+    <% @origin.each do |product| %>
+      <li><%= link_to product.name, product_path(product) %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h2>Most Recent Products:</h2>
+
+<% if @recent.any? %>
+  <ul>
+    <% @recent.each do |product| %>
+      <li><%= link_to product.name, product_path(product) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h2>Most Reviewed Product</h2>
+<h3><%=link_to @popular.first.name, product_path(@popular.first) %></h3>
+
+<p> If you would like to see all of marios special products, click the button below!<p>
+
+<%= link_to "All Products", products_path, :class => "btn btn warning" %>
